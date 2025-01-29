@@ -185,6 +185,16 @@ std::optional<ModelOutput> Worker::execute_model(const ModelInput& inputs) {
     output.logprobs = sampling_params.logprobs;
     output.max_top_logprobs = sampling_params.max_top_logprobs;
   }
+
+  // if (inputs.pooling_params.selected_token_idxes.defined()) {
+  //   // call model to get embedding for each sequence
+  //   do pooling based on query sequence length
+  //   torch::Tensor selected_hidden_states = model_->pooling(
+  //       hidden_states, inputs.pooling_params.selected_token_idxes);
+
+  //   // set hidden states to output
+  //   output.hidden_states = selected_hidden_states;
+  // }
   return output;
 }
 

@@ -67,6 +67,9 @@ struct SequenceOutput {
 
   // log probabilities of the generated tokens.
   std::optional<std::vector<LogProb>> logprobs;
+
+  // the embeddings of the sequence, only used for embedding generation.
+  std::optional<std::vector<float>> embeddings;
 };
 
 struct RequestOutput {

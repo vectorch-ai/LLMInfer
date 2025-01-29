@@ -210,6 +210,14 @@ std::optional<SequenceOutput> Sequence::build_delta_output_until(
 SequenceOutput Sequence::build_output(const Tokenizer& tokenizer) {
   AUTO_COUNTER(non_stream_decode_latency_seconds);
 
+  // return embeddings if available
+  if (this->embeddings_.has_value()) {
+    SequenceOutput output;
+    output.index = index_;
+    output.embeddings = std::move(this->embeddings_);
+    return output;
+  }
+
   const auto ids = token_ids();
   const size_t size = ids.size();
 

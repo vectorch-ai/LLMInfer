@@ -145,6 +145,11 @@ class Sequence final {
   void append_token(const Token& token);
   void append_token(int64_t token_id) { append_token(Token(token_id)); }
 
+  // set embeddings for the sequence
+  void set_embeddings(std::vector<float>&& embeddings) {
+    embeddings_ = std::move(embeddings);
+  }
+  
   // validate draft tokens with accepted tokens for speculative decoding
   // N.B. take int64_t as input to be compatible with torch::Tensor
   // returns the number of accepted tokens, including the resampled token
@@ -258,6 +263,9 @@ class Sequence final {
   // top k log probabilities of the sequence
   std::vector<std::vector<int64_t>> top_tokens_;
   std::vector<std::vector<float>> top_logprobs_;
+
+  // sequence embeddings
+  std::optional<std::vector<float>> embeddings_;
 
   // number of tokens in the sequence
   size_t num_tokens_ = 0;

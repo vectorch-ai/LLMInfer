@@ -37,6 +37,9 @@ struct ModelOutput {
 
   // logits for selected indices
   torch::Tensor logits;
+
+  // hidden states for selected indices
+  torch::Tensor hidden_states;
 };
 
 }  // namespace llm
