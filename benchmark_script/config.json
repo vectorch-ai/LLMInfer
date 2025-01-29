@@ -1,0 +1,12 @@
+{
+    "model_name_or_path": "openai-community/gpt2",
+    "input_file": "Chatbot_group_10_100.json",
+    "output_file": "output.json",
+    "results_file": "inference_results.txt",
+    "device": "cuda",
+    "batch_size": 8,
+    "max_seq_len": 100,
+    "temperature": 1.0,
+    "top_p": 0.01,
+    "repetition_penalty": 1.0
+  }
